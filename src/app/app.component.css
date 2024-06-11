@@ -3,21 +3,135 @@
   background: #73AD21;
   padding: 20px; 
   height: 700px;  
-  margin-top: 10%;
+  margin-top: 30%;
 }
 
+.split {
+  height: 100%;
+  position: fixed;
+  z-index: 1;  
+  overflow-x: hidden;
+  margin-top: -0.9rem;
+}
 .splitleft {
   left: 0;
-  width: 30%;
+  width: 24%;
   background-color:  rgb(37, 107, 177);
+  margin-left: 1%;
 }
 
 .splitright {
   right: 0;
   width: 70%;
-  background-color: white;
+  background-color: rgb(236, 245, 233);
+  margin-right: 0.6%;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+/* Style the container with a rounded border, grey background and some padding and margin */
+.container {
+  border: 2px solid #ccc;
+  background-color: #eee;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 16px ;
+  width: 97%;
+  height: 20%;
+  margin-left: 10px;
 }
 
+/* Clear floats after containers */
+.container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Float images inside the container to the left. Add a right margin, and style the image as a circle */
+.container img {
+  float: left;
+  margin-right: 50px;
+  margin-top: 5px;
+  border-radius: 100%;
+  height:70%;
+}
+
+/* Increase the font-size of a span element */
+.container span {
+  font-size: 20px;
+  margin-right: 15px;
+}
+
+.hide {
+  display: none;
+}
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 0.73rem;
+  margin-top: 35px;
+} 
+.social-links :hover + .hide {
+  display:inline;
+  color: rgb(14, 13, 13);
+}
+
+/* Tool tip styles - start */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+/* Tool tip styles - end */
+
+.social-links path {
+  transition: fill 0.3s ease;
+  fill: var(--gray-400);
+}
+
+.social-links a:hover svg path {
+  fill: var(--gray-900);
+}
+
+/* Add media queries for responsiveness. This will center both the text and the image inside the container */
+@media (max-width: 500px) {
+  .container {
+    text-align: center;
+  }
+
+  .container img {
+    margin: auto;
+    float: none;
+    display:grid;
+  }
+}
 :host {
     --bright-blue: oklch(51.01% 0.274 263.83);
     --electric-violet: oklch(53.18% 0.28 296.97);
@@ -55,7 +169,7 @@
   }
 
   h1 {
-    font-size: 3.125rem;
+    font-size: 2.5rem;
     color: var(--gray-900);
     font-weight: 500;
     line-height: 100%;
@@ -154,22 +268,6 @@
 
   .pill-group svg {
     margin-inline-start: 0.25rem;
-  }
-
-  .social-links {
-    display: flex;
-    align-items: center;
-    gap: 0.73rem;
-    margin-top: 1.5rem;
-  }
-
-  .social-links path {
-    transition: fill 0.3s ease;
-    fill: var(--gray-400);
-  }
-
-  .social-links a:hover svg path {
-    fill: var(--gray-900);
   }
 
   @media screen and (max-width: 650px) {
